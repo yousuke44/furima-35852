@@ -1,24 +1,59 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type    | Option      |
+| ------------------ | ------- | ----------- |
+| nickname           | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| last_name          | string  | null: false |
+| first_name         | string  | null: false |
+| last_name_kana     | string  | null: false |
+| first_name_kana    | string  | null: false |
+| year               | integer | null: false |
+| month              | integer | null: false |
+| day                | integer | null: false |
 
-* Ruby version
 
-* System dependencies
+## products テーブル
 
-* Configuration
+| Column          | Type       | Option        |
+| --------------- | ---------- | ------------- |
+| image           |            | ActiveStorage |
+| name            | string     | null: false   |
+| comment         | text       | null: false   |
+| category        | string     | null: false   |
+| condition       | string     | null: false   |
+| delivery_charge | string     | null: false   |
+| shipment_source | string     | null: false   |
+| days_to_ship    | string     | null: false   |
+| price           | integer    | null: false   |
+| user            | references |               |
 
-* Database creation
 
-* Database initialization
+## product_purchases テーブル
 
-* How to run the test suite
+| Column                | Type       | Option      |
+| --------------------- | ---------- | ----------- |
+| card_number           | integer    | null: false |
+| expiration_date_month | integer    | null: false |
+| expiration_date_year  | integer    | null: false |
+| security_code         | integer    | null: false |
+| postal_code           | string     | null: false |
+| state                 | string     | null: false |
+| city                  | string     | null: false |
+| address               | string     | null: false |
+| building_name         | string     | null: false |
+| phone_number          | integer    | null: false |
+| user                  | references |             |
+| product               | references |             |
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## comments テーブル
 
-* ...
+| Column  | Type       | Option      |
+| ------- | ---------- | ----------- |
+| text    | text       | null: false |
+| user    | references |             |
+| product | references |             |
