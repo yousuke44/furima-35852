@@ -15,8 +15,7 @@
 
 ### Association
 - has_many :products
-- has_many :purchase_histories
-- has_many :shipping_addresses
+- has_many :purchase_histories  
 
 
 ## products テーブル
@@ -36,7 +35,6 @@
 ### Association
 - belongs_to :user
 - has_one :purchase_history
-- has_one :shipping_address
 
 
 ## purchase_histories テーブル
@@ -44,13 +42,11 @@
 | Column           | Type       | Option            |
 | user             | references | foreign_key: true |
 | product          | references | foreign_key: true |
-| shipping_address | references | foreign_key: true |
 
 ### Association
 - belongs_to :user
 - belongs_to :product
-- belongs_to :shipping_addresses
-
+- has_one :shipping_address
 
 
 ## shipping_addresses テーブル
@@ -58,15 +54,12 @@
 | Column                | Type       | Option            |
 | --------------------- | ---------- | ----------------- |
 | postal_code           | string     | null: false       |
-| state                 | string     | null: false       |
+| state_id              | integer    | null: false       |
 | city                  | string     | null: false       |
 | address               | string     | null: false       |
-| building_name         | string     | null: false       |
-| phone_number          | integer    | null: false       |
-| user                  | references | foreign_key: true |
-| product               | references | foreign_key: true |
+| building_name         | string     |                   |
+| phone_number          | string     | null: false       |
+| purchase_history      | references | foreign_key: true |
 
 ### Association
-- belongs_to :user
-- belongs_to :product
-- has_one :purchase_histories
+- belongs_to :purchase_history
