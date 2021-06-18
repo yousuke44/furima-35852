@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   with_options presence: true do
-    validates :nickname, presence: true
-    validates :date_of_birth, presence: true
+    validates :nickname
+    validates :date_of_birth
 
     with_options format: { with: /\A[ぁ-んァ-ヶー-龥々ー]+\z/, message: 'Please enter your name in full-width' } do
       validates :last_name
