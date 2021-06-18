@@ -12,7 +12,7 @@ class User < ApplicationRecord
       validates :last_name
       validates :first_name
     end
-    with_options format: { with: /\A[ァ-ヶー]+\z/, message: 'Please enter your name in full-width' } do
+    with_options format: { with: /\A[ァ-ヶーー]+\z/, message: 'Please enter your name in full-width' } do
       validates :last_name_kana
       validates :first_name_kana
     end
