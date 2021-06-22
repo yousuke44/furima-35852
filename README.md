@@ -14,38 +14,38 @@
 | date_of_birth      | date    | null: false              |
 
 ### Association
-- has_many :products
-- has_many :purchase_histories  
+- has_many :items
+- has_many :orders  
 
 
-## products テーブル
+## items テーブル
 
-| Column             | Type       | Option            |
-| ------------------ | ---------- | ----------------- |
-| name               | string     | null: false       |
-| comment            | text       | null: false       |
-| category_id        | integer    | null: false       |
-| condition_id       | integer    | null: false       |
-| delivery_charge_id | integer    | null: false       |
-| shipment_source_id | integer    | null: false       |
-| days_to_ship_id    | integer    | null: false       |
-| price              | integer    | null: false       |
-| user               | references | foreign_key: true |
+| Column                 | Type       | Option            |
+| ---------------------- | ---------- | ----------------- |
+| name                   | string     | null: false       |
+| comment                | text       | null: false       |
+| category_id            | integer    | null: false       |
+| sales_status_id        | integer    | null: false       |
+| shipping_fee_status_id | integer    | null: false       |
+| prefecture_id          | integer    | null: false       |
+| scheduled_delivery_id  | integer    | null: false       |
+| price                  | integer    | null: false       |
+| user                   | references | foreign_key: true |
 
 ### Association
 - belongs_to :user
-- has_one :purchase_history
+- has_one :order
 
 
-## purchase_histories テーブル
+## orders テーブル
 
 | Column           | Type       | Option            |
 | user             | references | foreign_key: true |
-| product          | references | foreign_key: true |
+| item             | references | foreign_key: true |
 
 ### Association
 - belongs_to :user
-- belongs_to :product
+- belongs_to :item
 - has_one :shipping_address
 
 
@@ -62,4 +62,4 @@
 | purchase_history      | references | foreign_key: true |
 
 ### Association
-- belongs_to :purchase_history
+- belongs_to :orders
