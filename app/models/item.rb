@@ -21,7 +21,7 @@ class Item < ApplicationRecord
       validates :scheduled_delivery_id
     end
 
-    with_options numericality: { greater_than: 299, less_than: 9999999 }, format: { with: /\A[0-9]+\z/ } do
+    with_options numericality: { greater_than: 299, less_than: 9_999_999 }, format: { with: /\A[0-9]+\z/ } do
       validates :price
     end
   end
