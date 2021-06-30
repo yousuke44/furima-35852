@@ -65,8 +65,18 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberは10桁以上11桁以内でないと保存できないこと' do
+      it 'phone_numberはハイフンを含んでいると保存できない' do
         @order_address.phone_number = '090-1234-5678'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Not included hyphen(-)')
+      end
+      it 'phone_numberは10桁未満では保存できないこと' do
+        @order_address.phone_number = '090123456'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Not included hyphen(-)')
+      end
+      it 'phone_numberは12桁以上では保存できないこと' do
+        @order_address.phone_number = '090123456789'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is invalid. Not included hyphen(-)')
       end

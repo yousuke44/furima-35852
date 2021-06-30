@@ -17,7 +17,7 @@ class OrderAddress
       validates :prefecture_id
     end
 
-    with_options format: { with: /\A\d{10,11}\z/, message: 'is invalid. Not included hyphen(-)' } do
+    with_options format: { with: /\A\d{10,11}\z/, message: 'is invalid. Not included hyphen(-)'} do
       validates :phone_number
     end
   end
